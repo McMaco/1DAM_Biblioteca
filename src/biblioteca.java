@@ -525,11 +525,69 @@ public class biblioteca {
 			break;
 			
 			case 4://ELIMINAR
+				System.out.println("---------------");
+				System.out.println("BUSCAR POR ISBN");
+				System.out.println("---------------");
+				do {
+					try {
+						System.out.print("ISBN: ");
+						isbn = t.nextLine();
+					}
+					catch(Exception e) {
+						isbn = "a";
+					}
+					isbn = isbn.toUpperCase();
+				}while (isbn.matches(".*[^A-Z- ].*"));
 				
+				for(i=0; i<=libro.numlibros; i++) {
+					try {
+						if(libros[i].getISBN().equals(isbn)) {
+							System.out.println("----------------");
+							System.out.println("LIBRO ENCONTRADO");
+							System.out.println("----------------");
+							System.out.println();
+							System.out.println("Titulo: "+ libros[i].getTitulo());
+							System.out.println("Subtitulo: "+ libros[i].getSubtitulo());
+							System.out.println("Autor: "+ libros[i].getAutor());
+							System.out.println("Autores: " + libros[i].getAutores());
+							System.out.println("Editorial: "+ libros[i].getEditorial());
+							System.out.println("Año de edicion: "+ libros[i].getAño_edicion());
+							System.out.println("ISBN: "+ libros[i].getISBN());
+							System.out.println("Categoria: "+ libros[i].getCategoria());
+							System.out.println("Idioma: "+ libros[i].getIdioma());
+							System.out.println("Código: "+ libros[i].getCodigo());
+							System.out.println("Estado: "+ libros[i].getEstado());
+							System.out.println("Fecha prestamo: "+ libros[i].getFecha_prestamo());
+							System.out.println();
+							do {
+								try {
+									System.out.println("¿Desea eliminar este libro?");
+									System.out.println("1.- SI");
+									System.out.println("2.- NO");
+									opc1 = t.nextInt();
+								}
+								catch(Exception e) {
+									t.next();
+									opc1=0;
+								}
+							}while((opc1<1)||(opc1>2));
+							
+							if(opc1==1) {
+								libros[i]=null;
+							}
+						}
+					}
+					catch(Exception e) {
+						
+					}
+				}
 			break;
 			
 			case 5://MOSTRAR NUMERO DE LIBROS 
-				
+				System.out.println("----------------");
+				System.out.println("NUMERO DE LIBROS");
+				System.out.println("----------------");
+				System.out.println(libro.numlibros);
 			break;
 				
 			default:
